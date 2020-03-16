@@ -1,4 +1,4 @@
-# Singleton
+# [JAVA] Singleton
 
 
 - Singleton 클래스는 **생성자**와 **getInstance()** 의 메서드를 포함한 클래스이다. **하나의 해당 클래스에서 단 하나의 인스턴스만 만들도록 보장하는 방법을 싱글톤 패턴이라고 한다.**
