@@ -4,8 +4,69 @@
 
 ## static (data 영역)
 
-- JAVA 파일은 크게 **필드(Field), 생성자(Constructor), 메서드(Method)로 구성**되어 있다. 이 때, `static` 키워드가 붙은 **필드(Field) 부분에서 선언된 변수(전역 변수)** 와 **메서드(정적 멤버변수)** 는 **data 영역**에 저장된다.
+- JAVA 파일은 크게 **필드(Field), 생성자(Constructor), 메서드(Method)로 구성**되어 있다. 이 때, `static` 키워드가 붙은 **필드(Field) 부분에서 선언된 변수(전역 변수)**  또는 **메서드**는 **정적(static) 멤버** 이며, **data 영역**에 저장된다.
 - **data 영역**에 저장되어 있는 데이터는 **프로그램 종료 시 까지 메모리에 남아있다.**
+
+
+
+```java
+package test4;
+
+public class Static {
+
+    static int Count;   // 정적 필드
+    int a;  // 인스턴스 필드
+
+    public Static() {
+        this.Count ++;
+        this.a ++;
+        System.out.printf("Count : %s\t", this.Count);
+        System.out.printf("a : %s\n", this.a);
+
+    }
+
+    public int display() {
+       return a;
+    }
+
+    public static int getCount() {
+        return Count;
+    }
+
+
+    public static void main (String[] args) {
+        System.out.println(Count);
+        // Static 클래스 정적(field) 필드 사용 가능
+        // System.out.println(a);  Static 클래스 인스턴스 필드 사용 불가능
+        Static st1 = new Static();
+        Static st2 = new Static();
+
+        st1.display();
+        // 인스턴스 멤버 필요 시 인스턴스 생성 후 호출 가능
+
+        System.out.println(Static.getCount());
+        // Static 클래스 정적 메서드 사용 가능
+
+        // System.out.println(Static.display());    Static 클래스 인스턴스 메서드 사용 불가능
+    }
+}
+
+-------------------------------------------
+0
+Count : 1    a : 1
+Count : 2    a : 1
+2
+```
+
+**- 정적 멤버는 클래스명으로 바로 사용이 가능하다.**
+
+ex) Static.Count , Static.GetCount()
+
+**- 정적 메서드에서는 정적 멤버만 사용 가능하다.**
+
+ex) this 키워드, 메서드 오버라이딩 사용 불가능
+
+**- 인스턴스 멤버 필요시 인스턴스 생성 후 호출 가능**
 
 
 
